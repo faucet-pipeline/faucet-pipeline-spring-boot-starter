@@ -1,4 +1,4 @@
-package org.faucetpipeline.faucetpipelinespringbootautoconfigure;
+package org.faucet_pipeline.spring.autoconfigure;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
