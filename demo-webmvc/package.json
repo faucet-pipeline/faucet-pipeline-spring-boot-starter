@@ -1,0 +1,25 @@
+{
+  "name": "demo-webmvc",
+  "version": "1.0.0",
+  "description": "This is a Spring WebMVC based demo showcasing the faucet-pipeline.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michael-simons/faucet-pipeline-spring-boot-starter.git"
+  },
+  "author": "Michael Simons <michael@simons.ac> (http://michael-simons.eu)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/michael-simons/faucet-pipeline-spring-boot-starter/issues"
+  },
+  "homepage": "https://github.com/michael-simons/faucet-pipeline-spring-boot-starter#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "faucet-pipeline-js": "^1.0.0-beta.1",
+    "faucet-pipeline-sass": "^1.0.0-beta.0",
+    "faucet-pipeline-static": "^1.0.0-beta.0"
+  },
+  "scripts": {
+    "compile": "faucet",
+    "watch": "faucet --no-fingerprint --watch"
+  }
+}
