@@ -1,14 +1,14 @@
 package org.faucet_pipeline.spring.autoconfigure;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
-public class FaucetPipelineSpringBootAutoconfigureApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(FaucetPipelineSpringBootAutoconfigureApplication.class, args);
-	}
+/**
+ * @author Michael J. Simons, 2018-02-19
+ */
+@Configuration
+@EnableConfigurationProperties(FaucetPipelineAutoconfiguration.class)
+public class FaucetPipelineAutoconfiguration {
 }
 
 /*
