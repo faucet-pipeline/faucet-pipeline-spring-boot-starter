@@ -1,4 +1,4 @@
-package org.faucetpipeline.demowebmvc;
+package org.faucet_pipeline.demo.webmvc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
