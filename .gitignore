@@ -26,3 +26,4 @@ nbdist/
 # Node and NPM
 node_modules
 node
+/faucet-pipeline-spring-boot-autoconfigure/nbproject/

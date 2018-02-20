@@ -39,6 +39,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.faucet-pipeline</groupId>
+			<artifactId>faucet-pipeline-spring-boot-autoconfigure</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
@@ -82,6 +88,12 @@
 						<configuration>
 							<nodeVersion>v9.5.0</nodeVersion>
 						</configuration>
+					</execution>
+					<execution>
+						<id>install-node-dependencies</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
 					</execution>
 					<execution>
 						<id>run-faucet-pipeline</id>
