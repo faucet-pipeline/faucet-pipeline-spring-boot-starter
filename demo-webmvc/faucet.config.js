@@ -1,4 +1,4 @@
-let targetBaseDir = "./target/generated-resources/faucet/static"
+let targetBaseDir = "./target/classes/static"
 const path = require('path');
 
 module.exports = {      
@@ -16,7 +16,8 @@ module.exports = {
       }],
       */
       manifest: {
-              file: "./target/generated-resources/faucet/manifest.json",
+              file: "./target/classes/manifest.json",
+              //key: 'short',
               key: (f, targetDir) => path.relative(targetBaseDir, f),
               webRoot: targetBaseDir
           }
