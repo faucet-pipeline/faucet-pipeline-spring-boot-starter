@@ -22,7 +22,7 @@
     "popper.js": "^1.12.9"
   },
   "scripts": {
-    "compile": "faucet --fingerprint",
+    "compile": "faucet --fingerprint --compact",
     "watch": "faucet --no-fingerprint --watch"
   }
 }
