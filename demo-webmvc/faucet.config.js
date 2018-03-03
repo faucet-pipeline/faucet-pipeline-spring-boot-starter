@@ -2,10 +2,10 @@ let targetBaseDir = "./target/generated-resources/faucet/static"
 const path = require('path');
 
 module.exports = {      
-/*      js: [{
+      js: [{
           source: "./src/main/assets/index.js",
           target: targetBaseDir + "/app.js"
-      }],*/
+      }],
       sass: [{
           source: "./src/main/assets/index.scss",
           target: targetBaseDir + "/stylesheets/app.css"
