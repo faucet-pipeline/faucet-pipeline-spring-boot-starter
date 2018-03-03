@@ -13,7 +13,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
  * @author Michael J. Simons, 2018-02-19
  */
 @SpringBootApplication
-public class DemoWebmvcApplication {
+public class DemoWebfluxApplication {
 
     @Bean
     HandlerFunction<ServerResponse> index() {
@@ -29,6 +29,6 @@ public class DemoWebmvcApplication {
     
     
 	public static void main(String[] args) {
-		SpringApplication.run(DemoWebmvcApplication.class, args);
+		SpringApplication.run(DemoWebfluxApplication.class, args);
 	}
 }
