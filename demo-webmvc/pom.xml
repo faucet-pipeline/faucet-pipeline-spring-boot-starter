@@ -100,7 +100,7 @@
 							<goal>npm</goal>
 						</goals>
 						<configuration>
-							<arguments>run compile</arguments>
+							<arguments>run compile --fingerprint</arguments>
 						</configuration>
 					</execution>
 				</executions>

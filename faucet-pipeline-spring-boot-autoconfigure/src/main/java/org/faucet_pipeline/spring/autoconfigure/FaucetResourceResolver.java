@@ -16,20 +16,22 @@ import java.util.Optional;
  */
 public class FaucetResourceResolver implements ResourceResolver {
 
-    private final Map<String, String> manifest;
+    private final Manifest manifest;
 
-    public FaucetResourceResolver(@NonNull final Map<String, String> manifest) {
-        this.manifest = Collections.unmodifiableMap(manifest);
+    public FaucetResourceResolver(@NonNull final Manifest manifest) {
+        this.manifest = manifest;
     }
 
     @Override
     public Resource resolveResource(HttpServletRequest request, String requestPath, List<? extends Resource> locations, ResourceResolverChain chain) {
+        System.out.println("resolving url " + requestPath);
         return Optional.ofNullable(chain.resolveResource(request, requestPath, locations)).orElse(null);
 
     }
 
     @Override
     public String resolveUrlPath(String resourcePath, List<? extends Resource> locations, ResourceResolverChain chain) {
-        return this.manifest.get(resourcePath);
+        System.out.println("resolvinging " + resourcePath + " to "+ this.manifest.fetch(resourcePath));
+        return this.manifest.fetch(resourcePath);
     }
 }
