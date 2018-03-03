@@ -1,0 +1,11 @@
+@import "bootstrap/scss/bootstrap";
+@import "innoq-bootstrap-theme/src/styles/index.scss";
+
+body {
+  padding-top: 5rem;
+}
+
+header.intro {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
