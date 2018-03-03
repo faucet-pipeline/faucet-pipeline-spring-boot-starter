@@ -12,7 +12,6 @@ import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguratio
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
-import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.ResourceResolver;
@@ -23,7 +22,7 @@ import static org.springframework.boot.autoconfigure.condition.ConditionalOnWebA
 @Configuration
 @ConditionalOnWebApplication(type = SERVLET)
 @AutoConfigureBefore(WebMvcAutoConfiguration.class)
-class FaucetForWebMvcConfiguration {
+class PipelineForWebMvcConfiguration {
     
     @Bean
     WebMvcConfigurer faucetWebMvcConfigurer(
@@ -37,14 +36,14 @@ class FaucetForWebMvcConfiguration {
                 registry.addResourceHandler(faucetPipelineProperties.getPathPatterns())
                         .addResourceLocations(resourceProperties.getStaticLocations())
                         .resourceChain(faucetPipelineProperties.isCacheManifest())
-                            .addResolver(new FaucetResourceResolver(manifest));
+                            .addResolver(new ManifestBasedResourceResolver(manifest));
             }
         };
     }
 
     @Log
     @RequiredArgsConstructor
-    static class FaucetResourceResolver implements ResourceResolver {
+    static class ManifestBasedResourceResolver implements ResourceResolver {
         private final Manifest manifest;
         
         @Override

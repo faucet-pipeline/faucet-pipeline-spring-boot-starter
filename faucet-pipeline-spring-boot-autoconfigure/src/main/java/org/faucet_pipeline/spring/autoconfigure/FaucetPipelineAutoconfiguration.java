@@ -3,7 +3,6 @@ package org.faucet_pipeline.spring.autoconfigure;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnResource;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +12,7 @@ import org.springframework.context.annotation.Import;
 import java.io.IOException;
 import java.util.Arrays;
 import lombok.extern.java.Log;
+import org.springframework.boot.autoconfigure.web.ConditionalOnEnabledResourceChain;
 
 import static java.util.stream.Collectors.joining;
 
@@ -20,11 +20,11 @@ import static java.util.stream.Collectors.joining;
  * @author Michael J. Simons, 2018-02-19
  */
 @Configuration
-@ConditionalOnProperty(value = "spring.resources.chain.enabled", havingValue = "true")
+@ConditionalOnEnabledResourceChain
 @ConditionalOnResource(resources = "${faucet-pipeline.manifest:classpath:/manifest.json}")
 @ConditionalOnClass(ObjectMapper.class)
 @EnableConfigurationProperties(FaucetPipelineProperties.class)
-@Import({FaucetForWebMvcConfiguration.class, FaucetForWebFluxConfiguration.class})
+@Import({PipelineForWebMvcConfiguration.class, PipelineForWebFluxConfiguration.class})
 @Log
 public class FaucetPipelineAutoconfiguration {
     @Bean
