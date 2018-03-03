@@ -44,7 +44,7 @@
 
 		<dependency>
 			<groupId>org.faucet-pipeline</groupId>
-			<artifactId>faucet-pipeline-spring-boot-autoconfigure</artifactId>
+			<artifactId>faucet-pipeline-spring-boot-starter</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
