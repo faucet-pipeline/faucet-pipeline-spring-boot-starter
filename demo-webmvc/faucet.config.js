@@ -8,7 +8,7 @@ module.exports = {
       }],*/
       sass: [{
           source: "./src/main/assets/index.scss",
-          target: targetBaseDir + "/app.css"
+          target: targetBaseDir + "/stylesheets/app.css"
       }],
 /*      static: [{
           source: "./src/main/assets/images",
@@ -16,8 +16,8 @@ module.exports = {
       }],
       */
       manifest: {
-              file: "./target/generated-resources/faucet/manifest.json",              
+              file: "./target/generated-resources/faucet/manifest.json",
               key: (f, targetDir) => path.relative(targetBaseDir, f),
-              value: f => path.relative(targetBaseDir, f)
+              webRoot: targetBaseDir
           }
   };
