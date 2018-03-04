@@ -1,62 +1,38 @@
-<!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Ideas | Spring Boot with faucet-pipeline</title>
-
-    <link th:href="@{/stylesheets/application.css}" rel="stylesheet" data-turbolinks-track="reload">
-    <script th:src="@{/javascripts/application.js}" data-turbolinks-track="reload"></script>
+  <meta name="generator" content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Ideas | Spring Boot with faucet-pipeline</title>
+  <link th:href="@{/stylesheets/application.css}" rel="stylesheet" data-turbolinks-track="reload" />
+  <script th:src="@{/javascripts/application.js}" data-turbolinks-track="reload"></script>
 </head>
-
 <body>
-
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="#" th:href="@{/}">Ideas</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#" th:href="@{/new}">New idea</a>
-            </li>
-        </ul>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#" th:href="@{/new}">New idea</a>
+        </li>
+      </ul>
     </div>
-</nav>
-
-<main role="main" class="container">
-
+  </nav>
+  <main role="main" class="container">
     <header class="row intro">
-        <div class="col-md-3 col-sm-4">
-            <div class="text-center">
-                <img th:src="@{/images/faucet-logo.png}" class="img-fluid"/>
-            </div>
-        </div>
-        <div class="col">
-            <h1>Spring Boot with faucet-pipeline</h1>
-            <p class="lead">This is a demo project for the <a
-                    href="https://github.com/michael-simons/faucet-pipeline-spring-boot-starter">faucet-pipeline-spring-boot-starter</a>.
-                faucet-pipeline is a
-                framework-independent, pluggable asset pipeline that takes the pain out of preprocessing JavaScript, CSS
-                and associated files. Learn more at: <a href="http://www.faucet-pipeline.org">faucet-pipeline.org</a>.
-                <br/>This thing here stores ideas and makes use of <a href="https://github.com/turbolinks/turbolinks">turbolinks</a>.
-            </p>
-        </div>
+      <div class="col-md-3 col-sm-4">
+        <div class="text-center"><img th:src="@{/images/faucet-logo.png}" class="img-fluid" /></div>
+      </div>
+      <div class="col">
+        <h1>Spring Boot with faucet-pipeline</h1>
+        <p class="lead">This is a demo project for the <a href="https://github.com/michael-simons/faucet-pipeline-spring-boot-starter">faucet-pipeline-spring-boot-starter</a>. faucet-pipeline is a framework-independent, pluggable asset pipeline that takes the pain out of preprocessing JavaScript, CSS and associated files. Learn more at: <a href="http://www.faucet-pipeline.org">faucet-pipeline.org</a>.<br />
+        This thing here stores ideas and makes use of <a href="https://github.com/turbolinks/turbolinks">turbolinks</a>.</p>
+      </div>
     </header>
-
-    <div layout:fragment="content" />
-</main><!-- /.container -->
+    <div layout:fragment="content"></div>
+  </main><!-- /.container -->
 </body>
 </html>
-
-
-
-
