@@ -62,7 +62,7 @@
         <dependency>
             <groupId>org.faucet-pipeline</groupId>
             <artifactId>faucet-pipeline-spring-boot-starter</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
@@ -90,6 +90,7 @@
     </dependencies>
 
     <build>
+        <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

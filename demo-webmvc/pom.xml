@@ -41,11 +41,10 @@
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.faucet-pipeline</groupId>
 			<artifactId>faucet-pipeline-spring-boot-starter</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>

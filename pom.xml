@@ -42,6 +42,7 @@
     <modules>
         <module>faucet-pipeline-spring-boot-autoconfigure</module>
         <module>faucet-pipeline-spring-boot-starter</module>
+        <module>demo-webmvc</module>
         <module>demo-webflux</module>
     </modules>
 

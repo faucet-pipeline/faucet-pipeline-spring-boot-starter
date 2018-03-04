@@ -190,3 +190,6 @@ The demo is a Bootstrap-based site branded with the [INNOQ-theme](https://github
 
 ![Homepage WebMVC demo](./images/demo-webmvc.png)
 
+### Going reactive
+
+The `demo-webflux` Version is a fully reactive, Spring 5 + Kotlin based application. Please start this one directly as JAR, the Maven Spring Boot Plugin seems to configure stuff slightly differently. 
