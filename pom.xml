@@ -6,11 +6,12 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.0.RELEASE</version>
+		<relativePath />
     </parent>
 
     <groupId>org.faucet-pipeline</groupId>
     <artifactId>faucet-pipeline-spring-boot-parent</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>faucet-pipeline-spring-boot-parent</name>
