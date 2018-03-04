@@ -52,7 +52,7 @@ class PipelineForWebFluxConfiguration {
     @Bean
     WebFilter urlTransformingFilter(final ResourceUrlProvider resourceUrlProvider) {
         return (exchange, chain) -> {
-            exchange.addUrlTransformer(s -> resourceUrlProvider.getForUriString(s, exchange).block());
+            exchange.addUrlTransformer(s -> resourceUrlProvider.getForUriString(s, exchange).blockOptional().orElseGet(() -> s));
             return chain.filter(exchange);
         };
     }
