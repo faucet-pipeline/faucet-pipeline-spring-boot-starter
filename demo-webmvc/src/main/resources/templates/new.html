@@ -1,27 +1,19 @@
-<!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 <head>
-    <meta charset="utf-8"/>
+  <meta name="generator" content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" />
+  <meta charset="utf-8" />
+  <title></title>
 </head>
-
 <body layout:fragment="content">
-
-<form th:action="@{/new}" th:object="${idea}" method="POST" class="needs-validation" novalidate="novalidate">
+  <form th:action="@{/new}" th:object="${idea}" method="post" class="needs-validation" novalidate="novalidate">
     <div class="form-group">
-        <label class="form-check-label" for="content">Your idea</label>
-        <textarea class="form-control" name="content" id="content" rows="3" th:field="*{content}" th:required="true" th:errorclass="is-invalid" ></textarea>
-
-        <div class="invalid-feedback">
-            <span th:if="${#fields.hasErrors('content')}" th:errors="*{content}">all the errors</span>
-            <span th:unless="${#fields.hasErrors('content')}">Idea may not be null.</span>
-        </div>
-    </div>
-
-    <button type="submit" class="btn btn-primary btn-lg">Save</button>
-    <a class="btn btn-secondary btn-lg" th:href="@{/}">Back to idea list</a>
-</form>
+      <label class="form-check-label" for="content">Your idea</label> 
+      <textarea class="form-control" name="content" id="content" rows="3" th:field="*{content}" th:required="true" th:errorclass="is-invalid"></textarea>
+      <div class="invalid-feedback">
+        <span th:if="${#fields.hasErrors('content')}" th:errors="*{content}">all the errors</span> <span th:unless="${#fields.hasErrors('content')}">Idea may not be null.</span>
+      </div>
+    </div><button type="submit" class="btn btn-primary btn-lg">Save</button> <a class="btn btn-secondary btn-lg" th:href="@{/}">Back to idea list</a>
+  </form>
 </body>
 </html>

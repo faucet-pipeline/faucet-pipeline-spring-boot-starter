@@ -1,41 +1,32 @@
-<!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 <head>
-    <meta charset="utf-8" />
+  <meta name="generator" content="HTML Tidy for HTML5 for Apple macOS version 5.6.0" />
+  <meta charset="utf-8" />
+  <title></title>
 </head>
-
 <body layout:fragment="content">
-
-    <table  class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Idea</th>
-            <th scope="col">Created at</th>
-            <th/>
-        </tr>
-        </thead>
-        <tfoot/>
-        <tbody>
-        <tr th:each="idea: ${ideas}">
-            <th scope="row" th:text="${idea.id}">1</th>
-            <td th:text="${idea.content}">Mark</td>
-            <td th:text="${#temporals.format(idea.createdAt, 'dd-MM-yyyy HH:mm')}">1. April 2018</td>
-            <td class="align-middle">
-                <form th:action="@{/delete/{id}(id=${idea.id})}" th:method="DELETE">
-                    <button type="submit" data-confirm="Are you sure?" class="btn btn-danger btn-sm">Delete</button>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <a class="btn btn-secondary btn-lg" href="#" th:href="@{/new}">New idea</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Idea</th>
+        <th scope="col">Created at</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="idea: ${ideas}">
+        <th scope="row" th:text="${idea.id}">1</th>
+        <td th:text="${idea.content}">Mark</td>
+        <td th:text="${#temporals.format(idea.createdAt, 'dd-MM-yyyy HH:mm')}">1. April 2018</td>
+        <td class="align-middle">
+          <form th:action="@{/delete/{id}(id=${idea.id})}" th:method="DELETE">
+            <button type="submit" data-confirm="Are you sure?" class="btn btn-danger btn-sm">Delete</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table><a class="btn btn-secondary btn-lg" href="#" th:href="@{/new}">New idea</a>
 </body>
 </html>
-
-
-
-
