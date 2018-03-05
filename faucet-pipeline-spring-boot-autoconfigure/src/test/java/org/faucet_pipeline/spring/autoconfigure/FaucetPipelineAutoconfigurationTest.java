@@ -33,6 +33,7 @@ public class FaucetPipelineAutoconfigurationTest {
     };
 
     static final String FAUCET_WEB_MVC_CONFIGURER_NAME = "faucetWebMvcConfigurer";
+    static final String FAUCET_WEB_FLUX_CONFIGURER_NAME = "faucetWebFluxConfigurer";
 
     private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
         .withConfiguration(AutoConfigurations.of(FaucetPipelineAutoconfiguration.class));
@@ -79,9 +80,16 @@ public class FaucetPipelineAutoconfigurationTest {
     }
 
     @Test
-    public void shouldNeedWebApplication() {
+    public void shouldNeedWebMvcApplication() {
         contextRunner
             .withPropertyValues(REQUIRED_PROPERTIES)
             .run(ctx -> assertThat(ctx).doesNotHaveBean(FAUCET_WEB_MVC_CONFIGURER_NAME));
+    }
+
+    @Test
+    public void shouldNeedWebFluxApplication() {
+        contextRunner
+            .withPropertyValues(REQUIRED_PROPERTIES)
+            .run(ctx -> assertThat(ctx).doesNotHaveBean(FAUCET_WEB_FLUX_CONFIGURER_NAME));
     }
 }
