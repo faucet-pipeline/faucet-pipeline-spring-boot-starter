@@ -93,7 +93,7 @@ Create a `faucet.config.js` next to `package.json`. Here's the one from `demo-we
             target: targetBaseDir + "/images"
         }],
         manifest: {
-            file: "./target/classes/manifest.json",
+            target: "./target/classes/manifest.json",
             key: 'short',
             webRoot: targetBaseDir
         }

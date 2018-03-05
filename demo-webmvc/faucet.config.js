@@ -15,7 +15,7 @@ module.exports = {
         target: targetBaseDir + "/images"
     }],
     manifest: {
-        file: "./target/classes/manifest.json",
+        target: "./target/classes/manifest.json",
         key: 'short',
         webRoot: targetBaseDir
     }
