@@ -38,6 +38,9 @@ import org.springframework.web.server.WebFilter;
 
 import static org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication.Type.REACTIVE;
 
+/**
+ * @author Michael J. Simons, 2018-03-03
+ */
 @Configuration
 @ConditionalOnWebApplication(type = REACTIVE)
 @AutoConfigureBefore(WebFluxAutoConfiguration.class)
