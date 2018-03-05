@@ -16,13 +16,10 @@
 package org.faucet_pipeline.spring.autoconfigure;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.springframework.boot.autoconfigure.AutoConfigurations;
 import org.springframework.boot.test.context.FilteredClassLoader;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
-import org.springframework.core.DecoratingClassLoader;
-import org.springframework.core.OverridingClassLoader;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -30,16 +27,20 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Michael J. Simons, 2018-03-05
  */
 public class FaucetPipelineAutoconfigurationTest {
+    static final String[] REQUIRED_PROPERTIES = {
+        "spring.resources.chain.enabled = true",
+        "faucet-pipeline.manifest = classpath:/fetchShouldWork.json"
+    };
+
+    static final String FAUCET_WEB_MVC_CONFIGURER_NAME = "faucetWebMvcConfigurer";
+
     private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
         .withConfiguration(AutoConfigurations.of(FaucetPipelineAutoconfiguration.class));
 
     @Test
     public void shouldProvideManifestAndProperties() {
         contextRunner
-            .withPropertyValues(
-                "spring.resources.chain.enabled = true",
-                "faucet-pipeline.manifest = classpath:/fetchShouldWork.json"
-            )
+            .withPropertyValues(REQUIRED_PROPERTIES)
             .run(ctx -> assertThat(ctx)
                 .hasSingleBean(Manifest.class)
                 .hasSingleBean(FaucetPipelineProperties.class)
@@ -70,13 +71,17 @@ public class FaucetPipelineAutoconfigurationTest {
     public void shouldRequireObjectMapperOnClasspath() {
         contextRunner
             .withClassLoader(new FilteredClassLoader(ObjectMapper.class))
-            .withPropertyValues(
-                "spring.resources.chain.enabled = true",
-                "faucet-pipeline.manifest = classpath:/fetchShouldWork.json"
-            )
+            .withPropertyValues(REQUIRED_PROPERTIES)
             .run(ctx -> assertThat(ctx)
                 .doesNotHaveBean(Manifest.class)
                 .doesNotHaveBean(FaucetPipelineProperties.class)
             );
+    }
+
+    @Test
+    public void shouldNeedWebApplication() {
+        contextRunner
+            .withPropertyValues(REQUIRED_PROPERTIES)
+            .run(ctx -> assertThat(ctx).doesNotHaveBean(FAUCET_WEB_MVC_CONFIGURER_NAME));
     }
 }

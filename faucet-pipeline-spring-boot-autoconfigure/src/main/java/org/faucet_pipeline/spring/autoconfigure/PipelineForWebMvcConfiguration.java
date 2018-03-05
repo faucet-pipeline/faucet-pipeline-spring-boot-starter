@@ -34,6 +34,9 @@ import org.springframework.web.servlet.resource.ResourceResolverChain;
 
 import static org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication.Type.SERVLET;
 
+/**
+ * @author Michael J. Simons, 2018-03-03
+ */
 @Configuration
 @ConditionalOnWebApplication(type = SERVLET)
 @AutoConfigureBefore(WebMvcAutoConfiguration.class)
