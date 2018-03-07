@@ -48,9 +48,9 @@
     </modules>
 
     <scm>
-        <connection>scm:git:git@github.com:michael-simons/faucet-pipeline-spring-boot-starter.git</connection>
-        <developerConnection>scm:git:git@github.com:michael-simons/faucet-pipeline-spring-boot-starter.git</developerConnection>
-        <url>https://github.com/michael-simons/faucet-pipeline-spring-boot-starter</url>
+        <connection>scm:git:git@github.com:faucet-pipeline/faucet-pipeline-spring-boot-starter.git</connection>
+        <developerConnection>scm:git:git@github.com:faucet-pipeline/faucet-pipeline-spring-boot-starter.git</developerConnection>
+        <url>https://github.com/faucet-pipeline/faucet-pipeline-spring-boot-starter</url>
         <tag>HEAD</tag>
     </scm>
 
