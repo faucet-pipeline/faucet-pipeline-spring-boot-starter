@@ -41,7 +41,7 @@ Just include the starter in your pom.xml:
 <dependency>
     <groupId>org.faucet-pipeline</groupId>
     <artifactId>faucet-pipeline-spring-boot-starter</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-rc.3</version>
 </dependency>
 ```
 
