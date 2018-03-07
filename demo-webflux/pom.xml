@@ -4,7 +4,7 @@
 
     <groupId>org.faucet-pipeline</groupId>
     <artifactId>demo-webflux</artifactId>
-    <version>1.0.0-rc.3</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>demo-webflux</name>
@@ -155,8 +155,4 @@
             </plugin>
         </plugins>
     </build>
-
-  <scm>
-    <tag>1.0.0-rc.3</tag>
-  </scm>
 </project>
