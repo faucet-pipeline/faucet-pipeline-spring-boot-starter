@@ -17,17 +17,12 @@ package org.faucet_pipeline.demo.webflux
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.builder.SpringApplicationBuilder
-import org.springframework.boot.runApplication
-import org.springframework.context.annotation.Bean
 import org.springframework.context.support.beans
-import org.springframework.ui.ModelMap
 import org.springframework.web.filter.reactive.HiddenHttpMethodFilter
-import org.springframework.web.reactive.function.server.HandlerFunction
 import org.springframework.web.reactive.function.server.ServerRequest
 import org.springframework.web.reactive.function.server.ServerResponse
 import org.springframework.web.reactive.function.server.ServerResponse.ok
 import org.springframework.web.reactive.function.server.router
-import org.springframework.web.reactive.resource.ResourceUrlProvider
 import org.thymeleaf.spring5.context.webflux.ReactiveDataDriverContextVariable
 
 /**

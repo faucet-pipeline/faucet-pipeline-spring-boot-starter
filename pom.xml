@@ -108,12 +108,12 @@
                                             <limit>
                                                 <counter>INSTRUCTION</counter>
                                                 <value>COVEREDRATIO</value>
-                                                <minimum>0.75</minimum>
+                                                <minimum>0.95</minimum>
                                             </limit>
                                             <limit>
                                                 <counter>COMPLEXITY</counter>
                                                 <value>COVEREDRATIO</value>
-                                                <minimum>0.50</minimum>
+                                                <minimum>0.80</minimum>
                                             </limit>
                                         </limits>
                                     </rule>
