@@ -15,8 +15,6 @@
  */
 package org.faucet_pipeline.spring.autoconfigure;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.MapType;
 import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -24,8 +22,14 @@ import java.time.ZoneId;
 import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Level;
-import lombok.extern.java.Log;
+
 import org.springframework.core.io.Resource;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.MapType;
+
+import lombok.extern.java.Log;
+
 
 /**
  * Represents a view on the faucet manifest. The manifest is read everytime a
@@ -43,7 +47,7 @@ class Manifest {
 
     private final Resource manifest;
 
-    Manifest(ObjectMapper objectMapper, Resource manifest) {
+    Manifest(final ObjectMapper objectMapper, final Resource manifest) {
         this.objectMapper = objectMapper;
         this.mapType = objectMapper.getTypeFactory().constructMapType(Map.class, String.class, String.class);
         this.manifest = manifest;
@@ -75,7 +79,7 @@ class Manifest {
                 final String json = this.objectMapper.writeValueAsString(values);
                 final LocalDateTime lastModified = LocalDateTime.ofInstant(Instant.ofEpochMilli(manifest.lastModified()), ZoneId.systemDefault());
                 log.fine(() -> String.format("Using manifest from %s, last modified %s with content:%n%s", this.manifest, lastModified, json));
-            } catch (IOException e) {                
+            } catch (IOException e) {
                 log.log(Level.WARNING, e, () -> "Could not debug manifest");
             }
         }

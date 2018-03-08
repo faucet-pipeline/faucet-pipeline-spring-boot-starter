@@ -36,7 +36,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @RunWith(SpringRunner.class)
 @WebFluxTest
-@ImportAutoConfiguration({ThymeleafAutoConfiguration.class, FaucetPipelineAutoconfiguration.class})
+@ImportAutoConfiguration({ThymeleafAutoConfiguration.class, FaucetPipelineAutoConfiguration.class})
 @TestPropertySource("/application-test.properties")
 public class WebFluxIntegrationTest {
     @Autowired

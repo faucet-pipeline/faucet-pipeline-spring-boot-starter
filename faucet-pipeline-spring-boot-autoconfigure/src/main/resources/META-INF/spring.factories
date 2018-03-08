@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration = \
-  org.faucet_pipeline.spring.autoconfigure.FaucetPipelineAutoconfiguration
+  org.faucet_pipeline.spring.autoconfigure.FaucetPipelineAutoConfiguration

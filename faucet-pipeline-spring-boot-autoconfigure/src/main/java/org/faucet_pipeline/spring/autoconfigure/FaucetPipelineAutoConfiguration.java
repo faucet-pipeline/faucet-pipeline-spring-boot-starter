@@ -15,21 +15,23 @@
  */
 package org.faucet_pipeline.spring.autoconfigure;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import static java.util.stream.Collectors.joining;
+
+import java.io.IOException;
+import java.util.Arrays;
+
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnResource;
+import org.springframework.boot.autoconfigure.web.ConditionalOnEnabledResourceChain;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-import java.io.IOException;
-import java.util.Arrays;
-import lombok.extern.java.Log;
-import org.springframework.boot.autoconfigure.web.ConditionalOnEnabledResourceChain;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
-import static java.util.stream.Collectors.joining;
+import lombok.extern.java.Log;
 
 /**
  * @author Michael J. Simons, 2018-02-19
@@ -41,16 +43,23 @@ import static java.util.stream.Collectors.joining;
 @EnableConfigurationProperties(FaucetPipelineProperties.class)
 @Import({PipelineForWebMvcConfiguration.class, PipelineForWebFluxConfiguration.class})
 @Log
-public class FaucetPipelineAutoconfiguration {
+public class FaucetPipelineAutoConfiguration {
+    /**
+     * Creates the manifest instance.
+     *
+     * @param faucetPipelineProperties
+     * @return
+     * @throws IOException
+     */
     @Bean
-    Manifest faucetManifest(final FaucetPipelineProperties faucetPipelineProperties) throws IOException {    
-        log.fine(() -> String.format("Configuring faucet pipeline for manifest from %s for paths '%s'", 
-                faucetPipelineProperties.getManifest(), Arrays.stream(faucetPipelineProperties.getPathPatterns()).collect(joining(", "))));
+    Manifest faucetManifest(final FaucetPipelineProperties faucetPipelineProperties) throws IOException {
+        log.fine(() -> String.format("Configuring faucet pipeline for manifest from %s for paths '%s'",
+            faucetPipelineProperties.getManifest(), Arrays.stream(faucetPipelineProperties.getPathPatterns()).collect(joining(", "))));
         log.fine(() -> String.format("Manifest will %sbe cached", faucetPipelineProperties.isCacheManifest() ? "" : "not "));
-        
+
         final ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        
+
         return new Manifest(objectMapper, faucetPipelineProperties.getManifest());
     }
 }

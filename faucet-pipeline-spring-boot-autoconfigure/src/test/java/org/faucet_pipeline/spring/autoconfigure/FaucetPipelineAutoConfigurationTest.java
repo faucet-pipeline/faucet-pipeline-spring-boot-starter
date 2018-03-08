@@ -26,7 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * @author Michael J. Simons, 2018-03-05
  */
-public class FaucetPipelineAutoconfigurationTest {
+public class FaucetPipelineAutoConfigurationTest {
     static final String[] REQUIRED_PROPERTIES = {
         "spring.resources.chain.enabled = true",
         "faucet-pipeline.manifest = classpath:/fetchShouldWork.json"
@@ -36,7 +36,7 @@ public class FaucetPipelineAutoconfigurationTest {
     static final String FAUCET_WEB_FLUX_CONFIGURER_NAME = "faucetWebFluxConfigurer";
 
     private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
-        .withConfiguration(AutoConfigurations.of(FaucetPipelineAutoconfiguration.class));
+        .withConfiguration(AutoConfigurations.of(FaucetPipelineAutoConfiguration.class));
 
     @Test
     public void shouldProvideManifestAndProperties() {

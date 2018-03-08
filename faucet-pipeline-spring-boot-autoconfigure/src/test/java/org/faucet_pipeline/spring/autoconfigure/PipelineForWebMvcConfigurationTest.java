@@ -22,8 +22,8 @@ import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguratio
 import org.springframework.boot.test.context.runner.WebApplicationContextRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.faucet_pipeline.spring.autoconfigure.FaucetPipelineAutoconfigurationTest.FAUCET_WEB_MVC_CONFIGURER_NAME;
-import static org.faucet_pipeline.spring.autoconfigure.FaucetPipelineAutoconfigurationTest.REQUIRED_PROPERTIES;
+import static org.faucet_pipeline.spring.autoconfigure.FaucetPipelineAutoConfigurationTest.FAUCET_WEB_MVC_CONFIGURER_NAME;
+import static org.faucet_pipeline.spring.autoconfigure.FaucetPipelineAutoConfigurationTest.REQUIRED_PROPERTIES;
 
 /**
  * @author Michael J. Simons, 2018-03-05
@@ -32,7 +32,7 @@ public class PipelineForWebMvcConfigurationTest {
     private final WebApplicationContextRunner contextRunner = new WebApplicationContextRunner()
         .withConfiguration(AutoConfigurations.of(
             WebMvcAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
-            FaucetPipelineAutoconfiguration.class));
+            FaucetPipelineAutoConfiguration.class));
 
     @Test
     public void shouldProvideFaucetWebMvcConfigurer() {

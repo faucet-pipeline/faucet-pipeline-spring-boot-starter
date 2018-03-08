@@ -24,8 +24,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.resource.ResourceUrlProvider;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.faucet_pipeline.spring.autoconfigure.FaucetPipelineAutoconfigurationTest.FAUCET_WEB_FLUX_CONFIGURER_NAME;
-import static org.faucet_pipeline.spring.autoconfigure.FaucetPipelineAutoconfigurationTest.REQUIRED_PROPERTIES;
+import static org.faucet_pipeline.spring.autoconfigure.FaucetPipelineAutoConfigurationTest.FAUCET_WEB_FLUX_CONFIGURER_NAME;
+import static org.faucet_pipeline.spring.autoconfigure.FaucetPipelineAutoConfigurationTest.REQUIRED_PROPERTIES;
 
 /**
  * @author Michael J. Simons, 2018-03-05
@@ -34,7 +34,7 @@ public class PipelineForWebFluxConfigurationTest {
     private final ReactiveWebApplicationContextRunner contextRunner = new ReactiveWebApplicationContextRunner()
         .withConfiguration(AutoConfigurations.of(
             WebFluxAutoConfiguration.class,
-            FaucetPipelineAutoconfiguration.class));
+            FaucetPipelineAutoConfiguration.class));
 
     @Test
     public void shouldNotReplaceExistingResourceUrlProvider() {
