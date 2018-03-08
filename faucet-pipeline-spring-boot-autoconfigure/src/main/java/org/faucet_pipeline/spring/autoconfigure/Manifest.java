@@ -30,9 +30,8 @@ import com.fasterxml.jackson.databind.type.MapType;
 
 import lombok.extern.java.Log;
 
-
 /**
- * Represents a view on the faucet manifest. The manifest is read everytime a
+ * Represents a view on the faucet manifest. The resource is read every time a
  * resource is to be resolved, so therefore it is paramount to cache the
  * resources in the resource chain in production.
  *
@@ -43,14 +42,17 @@ class Manifest {
 
     private final ObjectMapper objectMapper;
 
+    private final Resource manifestResource;
+
+    /**
+     * A reference for Jackson so that it can created typed maps.
+     */
     private final MapType mapType;
 
-    private final Resource manifest;
-
-    Manifest(final ObjectMapper objectMapper, final Resource manifest) {
+    Manifest(final ObjectMapper objectMapper, final Resource manifestResource) {
         this.objectMapper = objectMapper;
+        this.manifestResource = manifestResource;
         this.mapType = objectMapper.getTypeFactory().constructMapType(Map.class, String.class, String.class);
-        this.manifest = manifest;
     }
 
     Optional<String> fetch(final String assetName) {
@@ -61,26 +63,26 @@ class Manifest {
             final Map<String, String> values = getValues();
             rv = Optional.ofNullable(values.get(assetName)).map(a -> a.replaceFirst("^/", ""));
         } catch (IOException e) {
-            log.log(Level.WARNING, e, () -> String.format("Could not load manifest from %s", manifest));
+            log.log(Level.WARNING, e, () -> String.format("Could not load manifestResource from %s", manifestResource));
             rv = Optional.empty();
         }
 
         if (!rv.isPresent()) {
-            log.warning(() -> String.format("The asset '%s' was not in the manifest", assetName));
+            log.warning(() -> String.format("The asset '%s' was not in the manifestResource", assetName));
         }
 
         return rv;
     }
 
     Map<String, String> getValues() throws IOException {
-        final Map<String, String> values = objectMapper.readValue(manifest.getInputStream(), mapType);
+        final Map<String, String> values = objectMapper.readValue(manifestResource.getInputStream(), mapType);
         if (log.isLoggable(Level.FINE)) {
             try {
                 final String json = this.objectMapper.writeValueAsString(values);
-                final LocalDateTime lastModified = LocalDateTime.ofInstant(Instant.ofEpochMilli(manifest.lastModified()), ZoneId.systemDefault());
-                log.fine(() -> String.format("Using manifest from %s, last modified %s with content:%n%s", this.manifest, lastModified, json));
+                final LocalDateTime lastModified = LocalDateTime.ofInstant(Instant.ofEpochMilli(manifestResource.lastModified()), ZoneId.systemDefault());
+                log.fine(() -> String.format("Using manifestResource from %s, last modified %s with content:%n%s", this.manifestResource, lastModified, json));
             } catch (IOException e) {
-                log.log(Level.WARNING, e, () -> "Could not debug manifest");
+                log.log(Level.WARNING, e, () -> "Could not debug manifestResource");
             }
         }
         return values;
