@@ -1,5 +1,7 @@
 # faucet-pipeline-spring-boot-starter
 
+[![Build Status](https://travis-ci.org/faucet-pipeline/faucet-pipeline-spring-boot-starter.svg?branch=master)](https://travis-ci.org/faucet-pipeline/faucet-pipeline-spring-boot-starter) [![Test coverage](https://sonarcloud.io/api/project_badges/measure?project=org.faucet-pipeline%3Afaucet-pipeline-spring-boot-parent&metric=coverage)](https://sonarcloud.io/dashboard?id=org.faucet-pipeline%3Afaucet-pipeline-spring-boot-parent) [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=org.faucet-pipeline%3Afaucet-pipeline-spring-boot-parent&metric=alert_status)](https://sonarcloud.io/dashboard?id=org.faucet-pipeline%3Afaucet-pipeline-spring-boot-parent) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.faucet-pipeline/faucet-pipeline-spring-boot-starter/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.faucet-pipeline/faucet-pipeline-spring-boot-starter)
+
 A Spring Boot starter and auto-configuration for the [faucet-pipeline](http://www.faucet-pipeline.org):
 
 > tl;dr: faucet-pipeline is a framework-independent, pluggable asset pipeline that takes the pain out of preprocessing JavaScript, CSS and associated files (e.g. images or fonts). It simplifies the process of converting modern JavaScript (ES6) to support older browsers (ES5), or Sass to CSS - eliminating typical low-level configuration nightmares.
