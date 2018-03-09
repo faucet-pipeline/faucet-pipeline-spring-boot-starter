@@ -35,7 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @author Michael J. Simons, 2018-03-05
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest()
+@WebMvcTest
 @ImportAutoConfiguration(FaucetPipelineAutoConfiguration.class)
 @TestPropertySource("/application-test.properties")
 public class WebMvcIntegrationTest {

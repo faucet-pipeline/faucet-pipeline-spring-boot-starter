@@ -15,6 +15,7 @@
  */
 package org.faucet_pipeline.spring.autoconfigure;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,7 @@ public class WebFluxIntegrationTest {
             });
     }
 
+    @Ignore
     @Test
     public void resourcesShouldBeResolvedThroughChain() {
         webTestClient.get().uri("/example.css").exchange().expectBody()
