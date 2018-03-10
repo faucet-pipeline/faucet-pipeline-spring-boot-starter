@@ -33,7 +33,7 @@ import org.thymeleaf.spring5.context.webflux.ReactiveDataDriverContextVariable
 @SpringBootApplication
 class DemoWebfluxApplication
 
-class UIHandler(val ideaRepository: IdeaRepository) {
+class UIHandler(private val ideaRepository: IdeaRepository) {
 
     fun index(req: ServerRequest)
             = ok().render("index", mapOf("ideas" to ReactiveDataDriverContextVariable(ideaRepository.findAll())))
