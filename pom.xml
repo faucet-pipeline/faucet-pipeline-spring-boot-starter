@@ -11,7 +11,7 @@
 
     <groupId>org.faucet-pipeline</groupId>
     <artifactId>faucet-pipeline-spring-boot-parent</artifactId>
-    <version>1.0.0-rc.4</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>faucet-pipeline-spring-boot-parent</name>
@@ -51,7 +51,7 @@
         <connection>scm:git:git@github.com:faucet-pipeline/faucet-pipeline-spring-boot-starter.git</connection>
         <developerConnection>scm:git:git@github.com:faucet-pipeline/faucet-pipeline-spring-boot-starter.git</developerConnection>
         <url>https://github.com/faucet-pipeline/faucet-pipeline-spring-boot-starter</url>
-        <tag>1.0.0-rc.4</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <properties>
