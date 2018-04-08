@@ -10,7 +10,7 @@ module.exports = {
         source: "./src/main/assets/stylesheets/application.scss",
         target: targetBaseDir + "/stylesheets/application.css"
     }],
-    static: [{
+    images: [{
         source: "./src/main/assets/images",
         target: targetBaseDir + "/images"
     }],
