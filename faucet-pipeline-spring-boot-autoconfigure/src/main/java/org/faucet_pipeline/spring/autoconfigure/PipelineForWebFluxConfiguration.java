@@ -39,6 +39,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 /**
  * @author Michael J. Simons, 2018-03-03
@@ -58,7 +59,11 @@ class PipelineForWebFluxConfiguration {
     WebFilter urlTransformingFilter(final ResourceUrlProvider resourceUrlProvider) {
         return (exchange, chain) -> {
             exchange.addUrlTransformer(s -> resourceUrlProvider.getForUriString(s, exchange).blockOptional().orElseGet(() -> s));
-            return chain.filter(exchange);
+            // We subscribe on a thread that allows blocking access to monos.
+            // Since Project Reactor 3.1.6, Blocking gets check access via
+            // Schedulers.isInNonBlockingThread(). I'm not fully sure if my solution
+            // here is the best idea for that usecase, though.
+            return chain.filter(exchange).subscribeOn(Schedulers.elastic());
         };
     }
 
