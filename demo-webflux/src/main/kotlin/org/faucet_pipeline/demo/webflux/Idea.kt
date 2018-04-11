@@ -26,6 +26,9 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.reactive.function.server.ServerRequest
+import org.springframework.web.reactive.function.server.ServerResponse
+import org.thymeleaf.spring5.context.webflux.ReactiveDataDriverContextVariable
 import reactor.core.publisher.Mono
 import java.time.LocalDateTime
 import javax.validation.Valid
@@ -60,7 +63,24 @@ class IdeaForm {
 }
 
 /**
+ * 50% of the UI handling.
+ */
+class UIHandler(private val ideaRepository: IdeaRepository) {
+
+    fun index(req: ServerRequest)
+            = ServerResponse.ok().render("index", mapOf("ideas" to ReactiveDataDriverContextVariable(ideaRepository.findAll())))
+
+    fun delete(req: ServerRequest) = ideaRepository
+            .deleteById(req.pathVariable("id"))
+            .then(ServerResponse.ok().render("redirect:/"))
+
+}
+
+/**
  * The actual class handing the front end.
+ *
+ * Handling POST data does not yet work flawless with request handlers, especially the hidden method filter breaks stuff,
+ * see https://jira.spring.io/browse/SPR-16551.
  */
 @Controller
 @RequestMapping("/new")
