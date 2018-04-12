@@ -32,9 +32,7 @@ import static org.faucet_pipeline.spring.autoconfigure.FaucetPipelineAutoConfigu
  */
 public class PipelineForWebFluxConfigurationTest {
     private final ReactiveWebApplicationContextRunner contextRunner = new ReactiveWebApplicationContextRunner()
-        .withConfiguration(AutoConfigurations.of(
-            WebFluxAutoConfiguration.class,
-            FaucetPipelineAutoConfiguration.class));
+        .withConfiguration(AutoConfigurations.of(FaucetPipelineAutoConfiguration.class));
 
     @Test
     public void shouldNotReplaceExistingResourceUrlProvider() {
