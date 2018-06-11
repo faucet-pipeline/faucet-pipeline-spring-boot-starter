@@ -36,10 +36,6 @@
         </developer>
     </developers>
 
-    <prerequisites>
-        <maven>3.5.0</maven>
-    </prerequisites>
-
     <modules>
         <module>faucet-pipeline-spring-boot-autoconfigure</module>
         <module>faucet-pipeline-spring-boot-starter</module>
@@ -72,6 +68,26 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>enforce</id>
+                            <configuration>
+                                <rules>
+                                    <DependencyConvergence />
+                                    <requireMavenVersion>
+                                        <version>3.5.3</version>
+                                    </requireMavenVersion>
+                                </rules>
+                            </configuration>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <phase>validate</phase>
+                        </execution>
+                    </executions>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
