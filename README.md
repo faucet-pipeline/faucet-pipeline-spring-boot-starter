@@ -10,16 +10,16 @@ The faucet-pipeline bundles your application files, fingerprints them and create
 
 ## Introduction
 
-This starter is needed when you want to use faucet with your [Spring Boot](https://projects.spring.io/spring-boot/) project. The following issues have to be tackled: 
+This starter is needed when you want to use faucet with your [Spring Boot](https://projects.spring.io/spring-boot/) project. The following issues have to be tackled:
 
 * The resource processed through the pipeline ("assets") should not be part of the regular Java / Groovy / Kotlin sources and other resources of the project. As such, the assets would be copied by the build system (either Maven or Gradle) itself. You have to provide a place for the assets, this is not something the starter can do for you.
-* The processed assets need to be in the class path of the Spring Application. This is also a build step, that the starter cannot do for you. 
+* The processed assets need to be in the class path of the Spring Application. This is also a build step, that the starter cannot do for you.
 
 What the starter does however are the following tasks:
 
 * It checks whether a faucet-manifests exists (defaults to `classpath:/manifest.json`) and if so, loads it
 * It checks whether the application is either a servlet or reactive web application. If not, the starter does nothing.
-* For a web application it registers a `ResourceResolver` that is able to retrieve internal urls that might are the output of finger printing and map them to external urls. 
+* For a web application it registers a `ResourceResolver` that is able to retrieve internal urls that might are the output of finger printing and map them to external urls.
 
 This works for servlet and reactive Spring applications.
 
@@ -29,7 +29,7 @@ This works for servlet and reactive Spring applications.
     cd faucet-pipeline-spring-boot-starter
     ./mvnw clean install
     cd demo-webmvc
-    FAUCETPIPELINE_CACHEMANIFEST=false ./mvnw spring-boot:run 
+    FAUCETPIPELINE_CACHEMANIFEST=false ./mvnw spring-boot:run
 
 Goto [localhost:8080](http://localhost:8080).
 
@@ -43,7 +43,7 @@ Just include the starter in your pom.xml:
 <dependency>
     <groupId>org.faucet-pipeline</groupId>
     <artifactId>faucet-pipeline-spring-boot-starter</artifactId>
-    <version>1.0.0-rc.3</version>
+    <version>1.0.0-rc.4</version>
 </dependency>
 ```
 
@@ -66,21 +66,21 @@ Follow the instructions from the website:
           faucet-pipeline-js\
           faucet-pipeline-sass\
           faucet-pipeline-static
-          
+
 In your `package.json` add the following scripts:
 
     "scripts": {
         "compile": "faucet --fingerprint --compact",
         "watch": "faucet --no-fingerprint --watch"
     }
-    
+
 The `compact`-switch is optional.
 
-Create a `faucet.config.js` next to `package.json`. Here's the one from `demo-webmvc`` 
+Create a `faucet.config.js` next to `package.json`. Here's the one from `demo-webmvc``
 
     let targetBaseDir = "./target/classes/static"
     const path = require('path');
-    
+
     module.exports = {
         js: [{
             source: "./src/main/assets/javascripts/application.js",
@@ -100,10 +100,10 @@ Create a `faucet.config.js` next to `package.json`. Here's the one from `demo-we
             webRoot: targetBaseDir
         }
     };
-    
+
 You'll notice that it puts the all processed assets into `./target/classes/static`. That is where Spring Boot looks for static files by default. Pushing it directly into the classes folder allows dynamic reloading later on. An alternative would be going through `generated-resources`.
 
-If you also opt for subdirectories for different kind of assets, you'll have to configure them in your Spring application as well:
+As the above configuration writes the assets into subdirectories you have to tell your Spring application to include those path patterns:
 
     faucet-pipeline.path-patterns = /javascripts/**, /stylesheets/**, /images/**
 
@@ -152,8 +152,8 @@ This downloads Node and NPM and installs all dependencies via `package.json` and
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
     </plugin>
-    
-you can run the application with `mvn spring-boot:run`. When you use a supported template language like Thymeleaf and the URL-helper they offer, links to assets will contain the finger printed resources automatically. Those links 
+
+you can run the application with `mvn spring-boot:run`. When you use a supported template language like Thymeleaf and the URL-helper they offer, links to assets will contain the finger printed resources automatically. Those links
 
     <link th:href="@{/stylesheets/application.css}" rel="stylesheet" data-turbolinks-track="reload">
     <script th:src="@{/javascripts/application.js}" data-turbolinks-track="reload"></script>
@@ -161,7 +161,7 @@ you can run the application with `mvn spring-boot:run`. When you use a supported
 Will be turned into
 
     <link href="/stylesheets/stylesheets/application-70d5f3dc18d122548efadcedfc0874f0.css" rel="stylesheet" data-turbolinks-track="reload">
-    <script src="/javascripts/javascripts/application-8af210bcc164a457cb381a627729320b.js" data-turbolinks-track="reload"></script> 
+    <script src="/javascripts/javascripts/application-8af210bcc164a457cb381a627729320b.js" data-turbolinks-track="reload"></script>
 
 #### Automatic restart, manifest caching
 
@@ -177,16 +177,16 @@ The manifest is cached by default but that can be turned off via `faucet-pipelin
 Run the demo in one window like so:
 
     FAUCETPIPELINE_CACHEMANIFEST=false ./mvnw spring-boot:run
-    
+
 And in another terminal  
 
     npm run watch
-    
+
 And you'll see the assets being processed and refreshed in the app.
 
 ## About the demo application
 
-Both demos - for WebMVC and Webflux - collect ideas. They use [Turbolinks](https://github.com/turbolinks/turbolinks) for quick navigation between server side rendered sites. Turbolinks come from [Ruby on Rails](http://rubyonrails.org). 
+Both demos - for WebMVC and Webflux - collect ideas. They use [Turbolinks](https://github.com/turbolinks/turbolinks) for quick navigation between server side rendered sites. Turbolinks come from [Ruby on Rails](http://rubyonrails.org).
 
 The demo is a Bootstrap-based site branded with the [INNOQ-theme](https://github.com/innoq/innoq-bootstrap-theme) and it looks like this:
 
@@ -194,4 +194,4 @@ The demo is a Bootstrap-based site branded with the [INNOQ-theme](https://github
 
 ### Going reactive
 
-The `demo-webflux` Version is a fully reactive, Spring 5 + Kotlin based application. Please start this one directly as JAR, the Maven Spring Boot Plugin seems to configure stuff slightly differently. 
+The `demo-webflux` Version is a fully reactive, Spring 5 + Kotlin based application. Please start this one directly as JAR, the Maven Spring Boot Plugin seems to configure stuff slightly differently.
