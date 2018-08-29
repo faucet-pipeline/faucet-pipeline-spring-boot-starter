@@ -103,7 +103,7 @@ Create a `faucet.config.js` next to `package.json`. Here's the one from `demo-we
 
 You'll notice that it puts the all processed assets into `./target/classes/static`. That is where Spring Boot looks for static files by default. Pushing it directly into the classes folder allows dynamic reloading later on. An alternative would be going through `generated-resources`.
 
-As the above configuration writes the assets into subdirectories you have to tell your Spring application to include those path patterns:
+As the above configuration writes the assets into subdirectories, you have to configure your Spring application to include those path patterns:
 
     faucet-pipeline.path-patterns = /javascripts/**, /stylesheets/**, /images/**
 
