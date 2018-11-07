@@ -14,7 +14,7 @@
   "homepage": "https://github.com/michael-simons/faucet-pipeline-spring-boot-starter#readme",
   "dependencies": {
     "bootstrap": "^4.1.1",
-    "faucet-pipeline-js": "^1.0.0",
+    "faucet-pipeline-js": "^1.1.0",
     "faucet-pipeline-sass": "^1.0.0",
     "faucet-pipeline-static": "^1.0.0",
     "innoq-bootstrap-theme": "0.0.9",
