@@ -20,12 +20,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Controller;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -58,13 +59,15 @@ public class WebMvcIntegrationTest {
 
     @Configuration
     static class TestConfiguration {
-    }
 
-    @Controller
-    static class TestController {
-        @GetMapping("/")
-        String index() {
-            return "index";
+        @Bean
+        WebMvcConfigurer webMvcConfigurer() {
+            return new WebMvcConfigurer() {
+                @Override
+                public void addViewControllers(ViewControllerRegistry registry) {
+                    registry.addViewController("/").setViewName("index");
+                }
+            };
         }
     }
 }

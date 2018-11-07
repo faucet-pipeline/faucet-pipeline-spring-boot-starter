@@ -21,15 +21,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Controller;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import reactor.core.publisher.Mono;
+import org.springframework.web.reactive.function.server.RouterFunction;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
+import static org.springframework.web.reactive.function.server.RouterFunctions.route;
+import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
 /**
  * @author Michael J. Simons, 2018-03-05
@@ -52,7 +54,7 @@ public class WebFluxIntegrationTest {
                     .contains("/app-723a7d7a249d998465d650e19bdca289.js");
             });
     }
-    
+
     @Test
     public void resourcesShouldBeResolvedThroughChain() {
         webTestClient.get().uri("/example.css").exchange().expectBody()
@@ -64,13 +66,9 @@ public class WebFluxIntegrationTest {
 
     @Configuration
     static class TestConfiguration {
-    }
-
-    @Controller
-    static class TestController {
-        @GetMapping("/")
-        Mono<String> index() {
-            return Mono.just("index");
+        @Bean
+        RouterFunction<?> router() {
+            return route(GET("/"), request -> ok().render("index"));
         }
     }
 }
