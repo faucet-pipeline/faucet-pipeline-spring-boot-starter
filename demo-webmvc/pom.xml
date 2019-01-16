@@ -4,7 +4,7 @@
 
 	<groupId>org.faucet-pipeline</groupId>
 	<artifactId>demo-webmvc</artifactId>
-	<version>1.1.1-SNAPSHOT</version>
+	<version>1.1.1</version>
 	<packaging>jar</packaging>
 
 	<name>demo-webmvc</name>
@@ -117,4 +117,8 @@
 			</plugin>
 		</plugins>
 	</build>
+
+  <scm>
+    <tag>1.1.1</tag>
+  </scm>
 </project>
