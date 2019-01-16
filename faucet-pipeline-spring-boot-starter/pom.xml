@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.faucet-pipeline</groupId>
 		<artifactId>faucet-pipeline-spring-boot-parent</artifactId>    
-		<version>1.1.1</version>
+		<version>1.1.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>faucet-pipeline-spring-boot-starter</artifactId>
