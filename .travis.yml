@@ -1,6 +1,6 @@
 language: java
 jdk:
-- oraclejdk8
+- openjdk11
 addons:
   sonarcloud:
     organization: "michael-simons-github"
