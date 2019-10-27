@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 the original author or authors.
+ * Copyright 2018-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package org.faucet_pipeline.spring.autoconfigure;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.AutoConfigurations;
 import org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
@@ -26,7 +26,9 @@ import static org.faucet_pipeline.spring.autoconfigure.FaucetPipelineAutoConfigu
 import static org.faucet_pipeline.spring.autoconfigure.FaucetPipelineAutoConfigurationTest.REQUIRED_PROPERTIES;
 
 /**
- * @author Michael J. Simons, 2018-03-05
+ * @author Michael J. Simons,
+ *
+ * @since 2018-03-05
  */
 public class PipelineForWebMvcConfigurationTest {
     private final WebApplicationContextRunner contextRunner = new WebApplicationContextRunner()
@@ -35,7 +37,7 @@ public class PipelineForWebMvcConfigurationTest {
             FaucetPipelineAutoConfiguration.class));
 
     @Test
-    public void shouldProvideFaucetWebMvcConfigurer() {
+    void shouldProvideFaucetWebMvcConfigurer() {
         contextRunner
             .withPropertyValues(REQUIRED_PROPERTIES)
             .run(ctx -> assertThat(ctx).hasBean(FAUCET_WEB_MVC_CONFIGURER_NAME));

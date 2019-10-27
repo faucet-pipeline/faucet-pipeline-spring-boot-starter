@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 the original author or authors.
+ * Copyright 2018-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,9 +35,11 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.extern.java.Log;
 
 /**
- * @author Michael J. Simons, 2018-02-19
+ * @author Michael J. Simons
+ *
+ * @since 2018-02-19
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @ConditionalOnEnabledResourceChain
 @ConditionalOnResource(resources = "${faucet-pipeline.manifest:classpath:/manifest.json}")
 @ConditionalOnClass(ObjectMapper.class)

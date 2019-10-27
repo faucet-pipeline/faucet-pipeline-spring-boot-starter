@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 the original author or authors.
+ * Copyright 2018-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,9 +42,11 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 /**
- * @author Michael J. Simons, 2018-03-03
+ * @author Michael J. Simons
+ *
+ * @since 2018-03-03
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @ConditionalOnWebApplication(type = REACTIVE)
 @AutoConfigureBefore(WebFluxAutoConfiguration.class)
 class PipelineForWebFluxConfiguration {

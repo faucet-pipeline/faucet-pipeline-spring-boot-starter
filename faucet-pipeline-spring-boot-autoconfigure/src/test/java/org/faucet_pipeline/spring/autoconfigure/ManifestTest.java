@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 the original author or authors.
+ * Copyright 2018-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,21 +16,23 @@
 package org.faucet_pipeline.spring.autoconfigure;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.logging.Logger;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 import org.springframework.core.io.ClassPathResource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * @author Michael J. Simons, 2018-03-03
+ * @author Michael J. Simons
+ *
+ * @since 2018-03-03
  */
-public class ManifestTest {
+class ManifestTest {
    
     private final ObjectMapper objectMapper = new ObjectMapper();
     
     @Test
-    public void fetchShouldWork() {
+    void fetchShouldWork() {
         final Manifest manifest = new Manifest(objectMapper, new ClassPathResource("fetchShouldWork.json"));        
         assertThat(manifest.fetch("bums")).isEmpty();
         assertThat(manifest.fetch("app.js")).contains("app-723a7d7a249d998465d650e19bdca289.js");
@@ -38,7 +40,7 @@ public class ManifestTest {
     }
     
     @Test
-    public void fetchShouldHandleBrokenManifest() {
+    void fetchShouldHandleBrokenManifest() {
         final Manifest manifest = new Manifest(objectMapper, new ClassPathResource("broken.json"));        
         assertThat(manifest.fetch("app.js")).isEmpty();
     }

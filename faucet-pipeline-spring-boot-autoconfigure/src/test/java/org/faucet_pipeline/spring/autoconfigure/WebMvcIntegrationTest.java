@@ -15,15 +15,13 @@
  */
 package org.faucet_pipeline.spring.autoconfigure;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -33,31 +31,32 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
 
 /**
- * @author Michael J. Simons, 2018-03-05
+ * @author Michael J. Simons
+ *
+ * @since 2018-03-05
  */
-@RunWith(SpringRunner.class)
 @WebMvcTest
 @ImportAutoConfiguration(FaucetPipelineAutoConfiguration.class)
 @TestPropertySource("/application-test.properties")
-public class WebMvcIntegrationTest {
+class WebMvcIntegrationTest {
 
     @Autowired
     private MockMvc mvc;
 
     @Test
-    public void linksShouldBeResolved() throws Exception {
+    void linksShouldBeResolved() throws Exception {
         this.mvc.perform(get("/"))
             .andExpect(xpath("//head/link/@href").string("/stylesheets/app-fbbe8f7da2ec00caa4f3c6400bedfa17.css"))
             .andExpect(xpath("//head/script/@src").string("/app-723a7d7a249d998465d650e19bdca289.js"));
     }
 
     @Test
-    public void resourcesShouldBeResolvedThroughChain() throws Exception {
+    void resourcesShouldBeResolvedThroughChain() throws Exception {
         this.mvc.perform(get("/example.css"))
             .andExpect(content().string("/* Empty. */"));
     }
 
-    @Configuration
+    @Configuration(proxyBeanMethods = false)
     static class TestConfiguration {
 
         @Bean

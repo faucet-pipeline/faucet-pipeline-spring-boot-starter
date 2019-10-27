@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 the original author or authors.
+ * Copyright 2018-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,7 @@
  */
 package org.faucet_pipeline.spring.autoconfigure;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration;
@@ -24,7 +23,6 @@ import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.server.RouterFunction;
 
@@ -34,18 +32,19 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
 /**
- * @author Michael J. Simons, 2018-03-05
+ * @author Michael J. Simons
+ *
+ * @since 2018-03-05
  */
-@RunWith(SpringRunner.class)
 @WebFluxTest
 @ImportAutoConfiguration({ThymeleafAutoConfiguration.class, FaucetPipelineAutoConfiguration.class})
 @TestPropertySource("/application-test.properties")
-public class WebFluxIntegrationTest {
+class WebFluxIntegrationTest {
     @Autowired
     private WebTestClient webTestClient;
 
     @Test
-    public void linksShouldBeResolved() {
+    void linksShouldBeResolved() {
         webTestClient.get().uri("/").exchange().expectBody()
             .consumeWith(bytes -> {
                 final String content = new String(bytes.getResponseBodyContent());
@@ -56,7 +55,7 @@ public class WebFluxIntegrationTest {
     }
 
     @Test
-    public void resourcesShouldBeResolvedThroughChain() {
+    void resourcesShouldBeResolvedThroughChain() {
         webTestClient.get().uri("/example.css").exchange().expectBody()
             .consumeWith(bytes -> {
                 final String content = new String(bytes.getResponseBodyContent());
@@ -64,7 +63,7 @@ public class WebFluxIntegrationTest {
             });
     }
 
-    @Configuration
+    @Configuration(proxyBeanMethods = false)
     static class TestConfiguration {
         @Bean
         RouterFunction<?> router() {

@@ -25,7 +25,7 @@ This works for servlet and reactive Spring applications.
 
 ## tl;dr
 
-    git clone https://github.com/michael-simons/faucet-pipeline-spring-boot-starter
+    git clone git@github.com:faucet-pipeline/faucet-pipeline-spring-boot-starter.git
     cd faucet-pipeline-spring-boot-starter
     ./mvnw clean install
     cd demo-webmvc

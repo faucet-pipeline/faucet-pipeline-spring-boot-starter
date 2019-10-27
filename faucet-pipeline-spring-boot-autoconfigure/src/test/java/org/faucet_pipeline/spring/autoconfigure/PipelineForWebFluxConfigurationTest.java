@@ -15,9 +15,8 @@
  */
 package org.faucet_pipeline.spring.autoconfigure;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.AutoConfigurations;
-import org.springframework.boot.autoconfigure.web.reactive.WebFluxAutoConfiguration;
 import org.springframework.boot.test.context.runner.ReactiveWebApplicationContextRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,14 +27,16 @@ import static org.faucet_pipeline.spring.autoconfigure.FaucetPipelineAutoConfigu
 import static org.faucet_pipeline.spring.autoconfigure.FaucetPipelineAutoConfigurationTest.REQUIRED_PROPERTIES;
 
 /**
- * @author Michael J. Simons, 2018-03-05
+ * @author Michael J. Simons,
+ *
+ * @since 2018-03-05
  */
-public class PipelineForWebFluxConfigurationTest {
+class PipelineForWebFluxConfigurationTest {
     private final ReactiveWebApplicationContextRunner contextRunner = new ReactiveWebApplicationContextRunner()
         .withConfiguration(AutoConfigurations.of(FaucetPipelineAutoConfiguration.class));
 
     @Test
-    public void shouldNotReplaceExistingResourceUrlProvider() {
+    void shouldNotReplaceExistingResourceUrlProvider() {
         contextRunner
             .withPropertyValues(REQUIRED_PROPERTIES)
             .withUserConfiguration(ExistingResourceUrlProvider.class)
@@ -43,7 +44,7 @@ public class PipelineForWebFluxConfigurationTest {
     }
 
     @Test
-    public void shouldProvideNeededBeans() {
+    void shouldProvideNeededBeans() {
         contextRunner
             .withPropertyValues(REQUIRED_PROPERTIES)
             .run(ctx -> assertThat(ctx)
@@ -52,7 +53,7 @@ public class PipelineForWebFluxConfigurationTest {
                 .hasBean(FAUCET_WEB_FLUX_CONFIGURER_NAME));
     }
 
-    @Configuration
+    @Configuration(proxyBeanMethods = false)
     static class ExistingResourceUrlProvider {
         @Bean
         public ResourceUrlProvider defaultResourceUrlProvider() {
