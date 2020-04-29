@@ -18,7 +18,7 @@
     "faucet-pipeline-sass": "^1.1.0",
     "faucet-pipeline-static": "^1.0.0",
     "innoq-bootstrap-theme": "0.0.9",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "popper.js": "^1.14.6",
     "rails-ujs": "^5.2.2",
     "turbolinks": "^5.1.1"
