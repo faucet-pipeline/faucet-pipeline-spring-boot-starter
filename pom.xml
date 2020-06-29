@@ -53,8 +53,6 @@
     <properties>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
         <build-date>${maven.build.timestamp}</build-date>
-
-        <lombok.version>1.18.0</lombok.version>
     </properties>
 
     <dependencies>
