@@ -13,14 +13,14 @@
   },
   "homepage": "https://github.com/michael-simons/faucet-pipeline-spring-boot-starter#readme",
   "dependencies": {
-    "bootstrap": "^4.2.1",
-    "faucet-pipeline-js": "^1.1.1",
-    "faucet-pipeline-sass": "^1.1.0",
-    "faucet-pipeline-static": "^1.0.0",
+    "bootstrap": "^4.5.0",
+    "faucet-pipeline-js": "^2.1.6",
+    "faucet-pipeline-sass": "^1.4.0",
+    "faucet-pipeline-static": "^1.2.0",
     "innoq-bootstrap-theme": "0.0.9",
-    "jquery": "^3.3.1",
-    "popper.js": "^1.14.6",
-    "rails-ujs": "^5.2.2",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "rails-ujs": "^5.2.4",
     "turbolinks": "^5.1.1"
   },
   "scripts": {

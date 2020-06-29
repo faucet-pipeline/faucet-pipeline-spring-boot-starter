@@ -123,7 +123,7 @@
                         </goals>
                         <phase>generate-resources</phase>
                         <configuration>
-                            <nodeVersion>v9.5.0</nodeVersion>
+                            <nodeVersion>v14.4.0</nodeVersion>
                         </configuration>
                     </execution>
                     <execution>
