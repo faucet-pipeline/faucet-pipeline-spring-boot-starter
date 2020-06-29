@@ -18,6 +18,10 @@
     <name>demo-webflux</name>
     <description>Demo project for Spring Boot</description>
 
+    <properties>
+        <frontend-maven-plugin.version>1.10.0</frontend-maven-plugin.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -110,7 +114,7 @@
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.6</version>
+                <version>${frontend-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>install-node-and-npm</id>
