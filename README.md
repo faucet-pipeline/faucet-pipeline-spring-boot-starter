@@ -47,6 +47,11 @@ Just include the starter in your pom.xml:
 </dependency>
 ```
 
+or in your build.gradle:
+
+    implementation 'org.faucet-pipeline:faucet-pipeline-spring-boot-starter:1.0.0-rc.4'
+
+
 The starter can only work if Springs [resource chain](https://docs.spring.io/spring/docs/5.0.4.RELEASE/spring-framework-reference/web.html#mvc-config-static-resources) is active. The starter won't activate this for you, so please configure
 
     spring.resources.chain.enabled=true
@@ -55,7 +60,8 @@ The resource resolver will be mapped to `/**`, so basically that's it.
 
 ### Compile time
 
-Make sure that your assets end up into `/classes`. This project contains two demos, `demo-webmvc` and `demo-webflux`. The following approach is from `demo-webmvc`.
+Make sure that your assets end up into `/classes` (maven) or `/resources/main` (gradle).
+This project contains two demos, `demo-webmvc` and `demo-webflux`. The following approach is from `demo-webmvc`.
 
 #### Configure your faucet-pipeline
 
@@ -107,7 +113,7 @@ As the above configuration writes the assets into subdirectories, you have to co
 
     faucet-pipeline.path-patterns = /javascripts/**, /stylesheets/**, /images/**
 
-#### Add `frontend-maven-plugin`
+#### Add `frontend-maven-plugin` (maven)
 
 [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin) is "Maven-node-grunt-gulp-npm-node-plugin to end all maven-node-grunt-gulp-npm-plugins.":
 
@@ -162,6 +168,40 @@ Will be turned into
 
     <link href="/stylesheets/stylesheets/application-70d5f3dc18d122548efadcedfc0874f0.css" rel="stylesheet" data-turbolinks-track="reload">
     <script src="/javascripts/javascripts/application-8af210bcc164a457cb381a627729320b.js" data-turbolinks-track="reload"></script>
+
+#### With gradle:
+
+Add
+
+```
+buildscript {
+	repositories {
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies {
+		classpath "com.moowork.gradle:gradle-node-plugin:1.2.0"
+	}
+}
+
+// ...plugins
+
+apply plugin: "com.moowork.node"
+```
+
+to your build.gradle to being able to execute npm/yarn.  
+Then add a frontend build task and let the `bootRun` task depend on it:
+
+```
+task buildFrontend(type: YarnTask) {
+	args = ['run', 'compile']
+}
+
+bootRun.dependsOn buildFrontend
+```
+
+Now you can run `gradle bootRun` to run your application.
 
 #### Automatic restart, manifest caching
 
