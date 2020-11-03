@@ -43,13 +43,13 @@ Just include the starter in your pom.xml:
 <dependency>
     <groupId>org.faucet-pipeline</groupId>
     <artifactId>faucet-pipeline-spring-boot-starter</artifactId>
-    <version>1.0.0-rc.4</version>
+    <version>1.1.1</version>
 </dependency>
 ```
 
 or in your build.gradle:
 
-    implementation 'org.faucet-pipeline:faucet-pipeline-spring-boot-starter:1.0.0-rc.4'
+    implementation 'org.faucet-pipeline:faucet-pipeline-spring-boot-starter:1.1.1'
 
 
 The starter can only work if Springs [resource chain](https://docs.spring.io/spring/docs/5.0.4.RELEASE/spring-framework-reference/web.html#mvc-config-static-resources) is active. The starter won't activate this for you, so please configure
