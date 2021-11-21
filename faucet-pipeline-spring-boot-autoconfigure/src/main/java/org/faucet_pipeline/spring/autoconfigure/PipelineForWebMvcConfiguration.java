@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -49,14 +49,14 @@ class PipelineForWebMvcConfiguration {
     @Bean
     WebMvcConfigurer faucetWebMvcConfigurer(
             final FaucetPipelineProperties faucetPipelineProperties,
-            final ResourceProperties resourceProperties,
+            final WebProperties webProperties,
             final Manifest manifest
     ) {
         return new WebMvcConfigurer() {
             @Override
             public void addResourceHandlers(final ResourceHandlerRegistry registry) {
                 registry.addResourceHandler(faucetPipelineProperties.getPathPatterns())
-                        .addResourceLocations(resourceProperties.getStaticLocations())
+                        .addResourceLocations(webProperties.getResources().getStaticLocations())
                         .resourceChain(faucetPipelineProperties.isCacheManifest())
                             .addResolver(new ManifestBasedResourceResolver(manifest));
             }
