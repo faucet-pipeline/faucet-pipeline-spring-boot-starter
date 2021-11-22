@@ -23,7 +23,7 @@ import java.util.Arrays;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnResource;
 import org.springframework.boot.autoconfigure.web.ConditionalOnEnabledResourceChain;
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -43,7 +43,7 @@ import lombok.extern.java.Log;
 @ConditionalOnEnabledResourceChain
 @ConditionalOnResource(resources = "${faucet-pipeline.manifest:classpath:/manifest.json}")
 @ConditionalOnClass(ObjectMapper.class)
-@EnableConfigurationProperties({ResourceProperties.class, FaucetPipelineProperties.class})
+@EnableConfigurationProperties({WebProperties.class, FaucetPipelineProperties.class})
 @Import({PipelineForWebMvcConfiguration.class, PipelineForWebFluxConfiguration.class})
 @Log
 public class FaucetPipelineAutoConfiguration {

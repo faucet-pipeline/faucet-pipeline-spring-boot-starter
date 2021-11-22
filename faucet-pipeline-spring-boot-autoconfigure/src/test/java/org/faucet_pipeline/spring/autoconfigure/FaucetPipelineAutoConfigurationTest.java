@@ -31,7 +31,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class FaucetPipelineAutoConfigurationTest {
     static final String[] REQUIRED_PROPERTIES = {
-        "spring.resources.chain.enabled = true",
+        "spring.web.resources.chain.enabled = true",
         "faucet-pipeline.manifest = classpath:/fetchShouldWork.json"
     };
 
@@ -64,7 +64,7 @@ class FaucetPipelineAutoConfigurationTest {
     @Test
     void shouldRequireManifest() {
         contextRunner
-            .withPropertyValues("spring.resources.chain.enabled = true")
+            .withPropertyValues("spring.web.resources.chain.enabled = true")
             .run(ctx -> assertThat(ctx)
                 .doesNotHaveBean(Manifest.class)
                 .doesNotHaveBean(FaucetPipelineProperties.class)

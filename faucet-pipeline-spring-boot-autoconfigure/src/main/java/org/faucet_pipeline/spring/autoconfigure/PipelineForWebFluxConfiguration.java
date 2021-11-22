@@ -22,7 +22,7 @@ import java.util.List;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.boot.autoconfigure.web.reactive.WebFluxAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -71,14 +71,14 @@ class PipelineForWebFluxConfiguration {
     @Bean
     WebFluxConfigurer faucetWebFluxConfigurer(
         final FaucetPipelineProperties faucetPipelineProperties,
-        final ResourceProperties resourceProperties,
+        final WebProperties webProperties,
         final Manifest manifest
     ) {
         return new WebFluxConfigurer() {
             @Override
             public void addResourceHandlers(final ResourceHandlerRegistry registry) {
                 registry.addResourceHandler(faucetPipelineProperties.getPathPatterns())
-                    .addResourceLocations(resourceProperties.getStaticLocations())
+                    .addResourceLocations(webProperties.getResources().getStaticLocations())
                     .resourceChain(faucetPipelineProperties.isCacheManifest())
                     .addResolver(new ReactiveManifestBasedResourceResolver(manifest));
             }
