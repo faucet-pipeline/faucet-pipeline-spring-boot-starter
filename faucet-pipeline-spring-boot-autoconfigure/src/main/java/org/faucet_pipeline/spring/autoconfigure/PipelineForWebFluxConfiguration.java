@@ -18,6 +18,8 @@ package org.faucet_pipeline.spring.autoconfigure;
 import static org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication.Type.REACTIVE;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
 
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -59,12 +61,21 @@ class PipelineForWebFluxConfiguration {
     @Bean
     WebFilter urlTransformingFilter(final ResourceUrlProvider resourceUrlProvider) {
         return (exchange, chain) -> {
-            exchange.addUrlTransformer(s -> resourceUrlProvider.getForUriString(s, exchange).blockOptional().orElseGet(() -> s));
-            // We subscribe on a thread that allows blocking access to monos.
-            // Since Project Reactor 3.1.6, Blocking gets check access via
-            // Schedulers.isInNonBlockingThread(). I'm not fully sure if my solution
-            // here is the best idea for that usecase, though.
-            return chain.filter(exchange).subscribeOn(Schedulers.elastic());
+
+            Function<String, String> urlTransformer = url -> {
+                try {
+                    // That (bound)Elastic-approach stopped working with Boot 2.4 ¯\_(ツ)_/¯
+                    return CompletableFuture.supplyAsync(
+                        () -> resourceUrlProvider.getForUriString(url, exchange)
+                            .subscribeOn(Schedulers.immediate())
+                            .blockOptional().orElse(url))
+                        .get();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            };
+            exchange.addUrlTransformer(urlTransformer);
+            return chain.filter(exchange);
         };
     }
 
