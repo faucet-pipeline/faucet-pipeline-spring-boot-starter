@@ -93,7 +93,7 @@ chain] is active. The starter won’t activate this for you, so please
 configure
 
 ....
-spring.resources.chain.enabled=true
+spring.web.resources.chain.enabled=true
 ....
 
 The resource resolver will be mapped to `/**`, so basically that’s it.
