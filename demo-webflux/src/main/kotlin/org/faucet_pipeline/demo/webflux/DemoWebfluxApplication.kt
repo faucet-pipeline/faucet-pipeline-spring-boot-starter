@@ -18,6 +18,7 @@ package org.faucet_pipeline.demo.webflux
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.context.support.beans
+import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories
 import org.springframework.web.filter.reactive.HiddenHttpMethodFilter
 import org.springframework.web.reactive.function.server.router
 
@@ -27,6 +28,7 @@ import org.springframework.web.reactive.function.server.router
  * @author Michael J. Simons
  */
 @SpringBootApplication
+@EnableReactiveMongoRepositories
 class DemoWebfluxApplication
 
 class Router(val handler: UIHandler) {

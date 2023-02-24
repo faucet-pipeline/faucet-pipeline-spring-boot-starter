@@ -28,11 +28,11 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.reactive.function.server.ServerRequest
 import org.springframework.web.reactive.function.server.ServerResponse
-import org.thymeleaf.spring5.context.webflux.ReactiveDataDriverContextVariable
+import org.thymeleaf.spring6.context.webflux.ReactiveDataDriverContextVariable
 import reactor.core.publisher.Mono
 import java.time.LocalDateTime
-import javax.validation.Valid
-import javax.validation.constraints.NotEmpty
+import jakarta.validation.Valid
+import jakarta.validation.constraints.NotEmpty
 
 /**
  * Ideas that are being stored.
