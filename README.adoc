@@ -2,12 +2,6 @@
 
 == faucet-pipeline-spring-boot-starter
 
-https://travis-ci.org/faucet-pipeline/faucet-pipeline-spring-boot-starter[image:https://travis-ci.org/faucet-pipeline/faucet-pipeline-spring-boot-starter.svg?branch=master[Build
-Status]]
-https://sonarcloud.io/dashboard?id=org.faucet-pipeline%3Afaucet-pipeline-spring-boot-parent[image:https://sonarcloud.io/api/project_badges/measure?project=org.faucet-pipeline%3Afaucet-pipeline-spring-boot-parent&metric=coverage[Test
-coverage]]
-https://sonarcloud.io/dashboard?id=org.faucet-pipeline%3Afaucet-pipeline-spring-boot-parent[image:https://sonarcloud.io/api/project_badges/measure?project=org.faucet-pipeline%3Afaucet-pipeline-spring-boot-parent&metric=alert_status[Quality
-Gate]]
 https://maven-badges.herokuapp.com/maven-central/org.faucet-pipeline/faucet-pipeline-spring-boot-starter[image:https://maven-badges.herokuapp.com/maven-central/org.faucet-pipeline/faucet-pipeline-spring-boot-starter/badge.svg[Maven
 Central]]
 
