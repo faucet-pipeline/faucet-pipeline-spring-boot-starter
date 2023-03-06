@@ -133,7 +133,6 @@ In your `package.json` add the following scripts:
     "compile": "faucet --fingerprint --compact",
     "watch": "faucet --no-fingerprint --watch"
 }
-....
 
 The `compact`-switch is optional.
 
@@ -202,7 +201,7 @@ following configuration:
             </goals>
             <phase>generate-resources</phase>
             <configuration>
-                <nodeVersion>v9.5.0</nodeVersion>
+                <nodeVersion>v18.14.2</nodeVersion>
             </configuration>
         </execution>
         <execution>
